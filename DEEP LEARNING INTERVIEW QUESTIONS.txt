@@ -1,0 +1,99 @@
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Dense
+from tensorflow.keras.layers import LSTM
+
+https://machinelearningmastery.com/multivariate-time-series-forecasting-lstms-keras/ air pollution data set link
+
+
+
+Deep learning Questions:
+1. What is Neural networks?
+2. What are weights?
+3. what is a layer,node,connections?
+4. what is dense layer?
+5. why to introduce activation/non linear functions?
+6. what is the purpose of loss/cost/error functions?
+7. what is the purpose of optimzers?
+8. name few activation functions
+9 name few optimzers
+10 name few cost functions
+11 explain gradient descent optimizers
+12 explain stochastic gradient descent optimizers
+13 explain adam(adaptive momenetum) optimizers
+14 explain adagrad(adaptive gradient) optimizers
+15 what is local minima & global minima
+16 explain difference between sigmoid, tanh activation functions
+17 explain difference between RELU, LeakyRELU activation functions
+18 explain the difference between step,RELU activation functions
+19 when to use RELU,tanh,sigmoid linear actiation functions
+20 what are the cost functions for regression problem
+21 what are the cost fucntions for classification problem
+22 what are the activation functions for regression problem
+23 what are the activation functions for classification problem
+24 what is the purpose of convolutions layer in CNN
+25 what is the purpose of max pooling layer in CNN
+26 what is the purpose of flatten layer in CNN
+27 what is the purpose of dropout in CNN or NN
+28 how to choose epochs in NN tranining
+29 how images or photos represented in code(dataframes)
+
+
+
+
+What is Neural networks? Neural networks are computational models inspired by the human brain, designed to recognize patterns. They consist of interconnected layers of nodes (neurons) that process data, learn from it, and make predictions or classifications without explicit programming.
+
+What are weights? Weights are parameters within a neural network that determine the strength of the connection between two neurons. During training, these weights are adjusted to learn patterns and minimize the difference between predicted and actual outputs.
+
+What is a layer, node, connections? A layer is a collection of interconnected nodes in a neural network. A node (or neuron) is a computational unit that receives inputs, processes them, and passes an output. Connections are the links between nodes across different layers, each associated with a specific weight.
+
+What is dense layer? A dense (or fully connected) layer is a type of neural network layer where every neuron in the layer is connected to every neuron in the preceding layer. It's commonly used at the end of a network for classification or regression tasks.
+
+Why to introduce activation/non linear functions? Activation functions introduce non-linearity into the network, allowing it to learn complex patterns and relationships in data that linear models cannot. Without them, a neural network, no matter how deep, would behave like a single-layer perceptron.
+
+What is the purpose of loss/cost/error functions? Loss functions quantify the difference between the predicted output of a neural network and the actual target value. They provide a measure of how well the model is performing, which is then used to guide the model's learning process during optimization.
+
+What is the purpose of optimizers? Optimizers are algorithms or methods used to adjust the weights and biases of a neural network during training to minimize the loss function. They determine how the model updates its internal parameters to learn from the errors it makes.
+
+Name few activation functions. Sigmoid, Tanh, ReLU (Rectified Linear Unit), Leaky ReLU, Softmax.
+
+Name few optimizers. Stochastic Gradient Descent (SGD), Adam, RMSprop, Adagrad, Adadelta.
+
+Name few cost functions. Mean Squared Error (MSE), Mean Absolute Error (MAE), Binary Cross-Entropy, Categorical Cross-Entropy.
+
+Explain Gradient Descent optimizer. Gradient Descent is an iterative optimization algorithm that adjusts model parameters (weights and biases) in the direction opposite to the gradient of the loss function. It aims to find the minimum of the loss function by taking small steps proportional to the negative of the gradient.
+
+Explain Stochastic Gradient Descent optimizer. Stochastic Gradient Descent (SGD) is a variant of Gradient Descent where model parameters are updated after processing each individual training example, rather than the entire dataset. This makes updates more frequent and can help escape shallow local minima.
+
+Explain Adam (Adaptive Momentum) optimizer. Adam (Adaptive Moment Estimation) is an optimization algorithm that combines the concepts of momentum and RMSprop. It adaptively calculates learning rates for each parameter based on the first (mean) and second (uncentered variance) moments of the gradients.
+
+Explain Adagrad (Adaptive Gradient) optimizer. Adagrad adapts the learning rate for each parameter based on the historical sum of squared gradients. It performs larger updates for infrequent parameters and smaller updates for frequent parameters, useful for sparse data.
+
+What is local minima & global minima? A global minimum is the point where the loss function has its lowest possible value across the entire parameter space. A local minimum is a point where the loss function is lower than in its immediate vicinity, but not necessarily the lowest overall.
+
+Explain difference between Sigmoid, Tanh activation functions. Sigmoid squashes outputs between 0 and 1, making it suitable for binary classification outputs. Tanh (hyperbolic tangent) squashes outputs between -1 and 1, centering the output around zero, which can aid in faster convergence in some cases.
+
+Explain difference between ReLU, Leaky ReLU activation functions. ReLU outputs the input directly if positive, and zero otherwise, addressing the vanishing gradient problem. Leaky ReLU is a variant that allows a small, non-zero gradient when the input is negative, preventing "dying ReLUs" where neurons become inactive.
+
+Explain the difference between Step, ReLU activation functions. A Step function (or Heaviside function) is a threshold-based activation that outputs 0 for inputs below a certain value and 1 (or another constant) for inputs above it, acting as a binary switch. ReLU provides a continuous output for positive inputs, allowing for more nuanced gradient flow.
+
+When to use ReLU, Tanh, Sigmoid activation functions?ReLU is typically preferred for hidden layers in deep networks due to its computational efficiency and ability to mitigate vanishing gradients. Sigmoid is often used in the output layer for binary classification problems. Tanh can be used in hidden layers as an alternative to sigmoid, especially when outputs centered around zero are beneficial.
+
+What are the cost functions for regression problem? Common cost functions for regression include Mean Squared Error (MSE), which penalizes larger errors more heavily, and Mean Absolute Error (MAE), which measures the average magnitude of errors without considering their direction.
+
+What are the cost functions for classification problem? Common cost functions for classification include Binary Cross-Entropy for binary classification, and Categorical Cross-Entropy (or Sparse Categorical Cross-Entropy) for multi-class classification problems.
+
+What are the activation functions for regression problem? For regression problems, the output layer typically uses a linear (no) activation function, allowing the model to output any real number. If outputs are constrained (e.g., between 0 and 1), sigmoid or other limited range activations might be used.
+
+What are the activation functions for classification problem? For binary classification, Sigmoid is used in the output layer. For multi-class classification, Softmax is used in the output layer to produce a probability distribution over the classes.
+
+What is the purpose of convolution layer in CNN? The convolution layer in a CNN applies learnable filters (kernels) to the input data to detect local patterns such as edges, textures, or shapes. It extracts relevant features by performing a convolution operation, creating feature maps.
+
+What is the purpose of max pooling layer in CNN? The max pooling layer down-samples the feature maps, reducing their spatial dimensions (height and width) while retaining the most important features (the maximum values). This helps reduce computational cost, memory usage, and makes the detected features more robust to slight translations.
+
+What is the purpose of flatten layer in CNN? The flatten layer converts the multi-dimensional output of convolutional and pooling layers into a 1D vector. This is necessary to transition the data from the convolutional part of the CNN to the fully connected (dense) layers that typically perform classification or regression.
+
+What is the purpose of dropout in CNN or NN? Dropout is a regularization technique that randomly sets a fraction of neurons' outputs to zero during training. This prevents complex co-adaptations between neurons, forces the network to learn more robust features, and reduces overfitting.
+
+How to choose epochs in NN training? The number of epochs is chosen empirically, often by monitoring the validation loss during training. You typically train until the validation loss stops decreasing or starts increasing (indicating overfitting), a technique known as early stopping.
+
+How images or photos represented in code (dataframes)? Images are typically represented as multi-dimensional NumPy arrays or tensors. For grayscale images, it's a 2D array (height x width) of pixel intensity values. For color images, it's a 3D array (height x width x color channels, e.g., RGB). They are rarely represented directly as DataFrames in deep learning.
